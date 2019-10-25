@@ -19,8 +19,8 @@
       true,
       {
         "multiline": {
-          "objects": "never",
-          "arrays": "never",
+          "objects": "always",
+          "arrays": "always",
           "functions": "never",
           "typeLiterals": "ignore"
         },
@@ -35,7 +35,8 @@
     "semicolon": [
       true,
       "always",
-      "ignore-bound-class-methods"
+      "ignore-interfaces",
+      "ignore-bound-class-methods",
     ],
     "whitespace": [
       true,
