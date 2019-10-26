@@ -1,7 +1,12 @@
 import express from 'express';
 import feedbackly from '../services/feedbackly';
 import { FeedbackQuery, FeedbacklyAPI, Rating } from '../types';
-import { getAverageRatingFromAnswers, getRatingFromSingleAnswer, getAverageRatingFromFeedbacks } from '../utils/feedbacks';
+import {
+    getAverageRatingFromAnswers,
+    getAverageRatingFromFeedbacks,
+    getFilteredRatings,
+    // getRatingFromSingleAnswer,
+} from '../utils/feedbacks';
 
 const surveyId = '5c072aebf6466b0a4e4b696b';
 
@@ -17,25 +22,27 @@ router.get('/', async (req, res) => {
         const channelIdQuery = room && `&channel_id=${room}` || '';
         const dateFromQuery = dateFrom && `&date_from=${dateFrom}` || '';
         const dateToQuery = dateTo && `&date_to=${dateTo}` || '';
+        const limit = limitPoint && parseInt(limitPoint) || 0;
 
         const feedbacks = await feedbackly
             .get(`/feedbacks?survey_id=${surveyId}${channelIdQuery}${dateFromQuery}${dateToQuery}`)
-            .then(res => res.data.data as FeedbacklyAPI[])
-            .then(fbs => fbs.filter(fb => !!fb.data.find(ans => ans.question_type === 'Slider')));
-
-        console.log(feedbacks);
+            .then(res => res.data.data as FeedbacklyAPI[]);
+            // to find also feedbacks have questions 4 5
+            // .then(fbs => fbs.filter(fb => !!fb.data.find(ans => ans.question_type === 'Slider')));
 
         const ratings: Rating[] = feedbacks.map(feedback => ({
-            ratings: feedback.data.map(ans => [ans.question_type , Math.round(getRatingFromSingleAnswer(ans) * 100) / 100]),
-            rating: Math.round(getAverageRatingFromAnswers(feedback.data) * 100) / 100,
+            rating: +getAverageRatingFromAnswers(feedback.data).toFixed(2),
             timestamp: new Date(feedback.created_at).getTime(),
+            // to check questions 4 5
+            // ratings: feedback.data.map(ans => [ans.question_type , +getRatingFromSingleAnswer(ans).toFixed(2)]),
         }));
 
-        const averageRating = Math.round(getAverageRatingFromFeedbacks(ratings) * 100) / 100;
+        const filteredRatings = getFilteredRatings(ratings, limit);
+        const averageRating = +getAverageRatingFromFeedbacks(ratings).toFixed(2);
 
         return res.status(200).json({
             averageRating,
-            ratings,
+            ratings: filteredRatings,
         });
     } catch (err) {
         return res.status(500).send('There was a problem finding feedbacks.');
