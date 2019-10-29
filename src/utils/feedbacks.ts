@@ -3,7 +3,7 @@ import { ratings } from './constants';
 
 export const getRatingFromSingleAnswer = (answer: AnswerAPI): number =>
     answer.question_type === 'Slider'
-        ? (1 - answer.value[0].data) * 5 // NEED TO CHECK AGAIN: REVERSE OR NOT
+        ? (1 - answer.value[0].data) * 4 + 1 // NEED TO CHECK AGAIN: REVERSE OR NOT
         : ratings[answer.question_id][answer.value[0]];
 
 export const getAverageRatingFromAnswers = (answers: AnswerAPI[]): number =>

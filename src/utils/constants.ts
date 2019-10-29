@@ -49,3 +49,7 @@ export const sliderQuestions = [
     '5c072e5c7af0f18c829fdff1', // question 4: smell, 0 = no odor, 10 = strong odor
     '5c07311c7af0f18c829fdff2', // question 5: cleanliness, 0 = no particles / dust, 10 = lots of particles / dust
 ];
+
+export const surveyId = '5c072aebf6466b0a4e4b696b';
+
+export const organizationId = '5bd06a081ad589125f331bbe';

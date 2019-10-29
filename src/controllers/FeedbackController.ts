@@ -7,8 +7,7 @@ import {
     getFilteredRatings,
     // getRatingFromSingleAnswer,
 } from '../utils/feedbacks';
-
-const surveyId = '5c072aebf6466b0a4e4b696b';
+import { surveyId } from '../utils/constants';
 
 const router = express.Router();
 
