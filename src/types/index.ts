@@ -68,3 +68,22 @@ interface WordAnswer {
 }
 
 export type AnswerAPI = SliderAnswer | WordAnswer;
+
+export interface RoomsQuery {
+    name?: string,
+}
+
+export interface ChannelAPI {
+    name: string,
+    type: string,
+    last_seen: string,
+    last_feedback: string,
+    id: string,
+}
+
+export interface RoomAPI {
+    name: string,
+    lastSeen: number,
+    lastFeedback: number,
+    id: string,
+}
