@@ -15,4 +15,4 @@ export const getAverageRatingFromFeedbacks = (ratings: Rating[]): number =>
         .reduce((pre, cur) => pre + cur, 0) / ratings.length;
 
 export const getFilteredRatings = (ratings: Rating[], limit: number): Rating[] =>
-    ratings.filter(r => r.rating >= limit);
+    ratings.filter(r => r.rating <= limit);
