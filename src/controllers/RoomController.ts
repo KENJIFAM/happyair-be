@@ -4,28 +4,24 @@ import { RoomsQuery, ChannelAPI, RoomAPI } from '../types';
 
 const router = express.Router();
 
-// @GET feedbacks?room={room-id}&limit-point=2.5&start-time=timestamp&end-time=<>
+// @GET rooms?id={room-id}
 router.get('/', async (req, res) => {
     try {
-        const { name } = req.query as RoomsQuery;
+        const { id } = req.query as RoomsQuery;
 
         const channels = await feedbackly.get('/channels')
             .then(res => res.data as ChannelAPI[]);
 
         const rooms: RoomAPI[] = channels
-            .filter(channel => channel.type === 'DEVICE' &&
-                (name ? channel.name.toLowerCase().includes(name.toLowerCase()) : true))
+            .filter(channel =>
+                channel.name.includes('Kaisaniemen ala-aste') &&
+                !channel.name.includes('124') &&
+                !channel.name.includes('509'))
             .map(channel => ({
                 id: channel.id,
-                name: channel.name.split(' / ')[1],
-                lastSeen: new Date(channel.last_seen).getTime(),
-                lastFeedback: new Date(channel.last_feedback).getTime(),
+                name: `Room ${channel.name.slice(-3)}`,
             }));
-        console.log(rooms);
-
-        return res.status(200).json({
-            rooms,
-        });
+        return res.status(200).json([ ...rooms ]);
     } catch (err) {
         return res.status(500).send('There was a problem finding rooms.' + err);
     }

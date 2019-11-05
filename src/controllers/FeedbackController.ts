@@ -6,12 +6,12 @@ import {
     getAverageRatingFromFeedbacks,
     getFilteredRatings,
     // getRatingFromSingleAnswer,
-} from '../utils/feedbacks';
+} from '../utils';
 import { surveyId } from '../utils/constants';
 
 const router = express.Router();
 
-// @GET feedbacks?room={room-id}&limit-point=2.5&start-time=timestamp&end-time=<>
+// @GET feedbacks?room={room-id}&limitPoint={max-rate}&startTime={timestamp}&endTime={timestamp}
 router.get('/', async (req, res) => {
     try {
         const { room, limitPoint, startTime, endTime } = req.query as FeedbackQuery;
