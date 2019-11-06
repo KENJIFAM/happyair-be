@@ -38,6 +38,7 @@ export interface FeedbackQuery {
 export interface Rating {
     rating: number,
     timestamp: number,
+    id: string,
 }
 
 export interface FeedbackAPI {

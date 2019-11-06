@@ -32,6 +32,7 @@ router.get('/', async (req, res) => {
         const ratings: Rating[] = feedbacks.map(feedback => ({
             rating: +getAverageRatingFromAnswers(feedback.data).toFixed(2),
             timestamp: new Date(feedback.created_at).getTime(),
+            id: feedback.id,
             // to check questions 4 5
             // ratings: feedback.data.map(ans => [ans.question_type , +getRatingFromSingleAnswer(ans).toFixed(2)]),
         }));
