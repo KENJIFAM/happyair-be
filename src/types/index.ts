@@ -79,3 +79,19 @@ export interface ChannelAPI {
 }
 
 export type RoomAPI = ChannelAPI;
+
+export interface IndoorConditionDataParams {
+    startTime: string,
+    endTime: string,
+}
+
+export interface MeasurementDataByIDsParams {
+    dataPointIds: string,
+    startTime: string,
+    endTime: string,
+}
+
+export interface MeasurementInfoAPI {
+    DataPointID: number,
+    Name: string,
+}

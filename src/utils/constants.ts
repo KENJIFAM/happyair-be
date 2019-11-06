@@ -53,3 +53,5 @@ export const sliderQuestions = [
 export const surveyId = '5c072aebf6466b0a4e4b696b';
 
 export const organizationId = '5bd06a081ad589125f331bbe';
+
+export const buildingId = 2410;
