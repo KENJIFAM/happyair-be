@@ -12,7 +12,7 @@ export const getRatingDetailFromAnswers = (answers: AnswerAPI[]): RatingDetail =
         .reduce((pre, cur) => pre + cur, 0) / answers.length)
         .toFixed(2),
     ...answers.reduce((obj, answer) => {
-        obj[ratings[answer.question_id].title] = getRatingFromSingleAnswer(answer);
+        obj[ratings[answer.question_id].title] = +getRatingFromSingleAnswer(answer).toFixed(2);
         return obj;
     }, {}),
 });
