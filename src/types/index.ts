@@ -35,8 +35,19 @@ export interface FeedbackQuery {
     endTime?: string,
 }
 
-export interface Rating {
+export interface RatingDetail {
     rating: number,
+    temperature?: number,
+    freshness?: number,
+    humidity?: number,
+    smell?: number,
+    cleanliness?: number,
+    lighting?: number,
+    sound?: number,
+    workingAbility?: number,
+}
+
+export interface Rating extends RatingDetail {
     timestamp: number,
     id: string,
 }

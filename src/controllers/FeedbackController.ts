@@ -2,9 +2,9 @@ import express from 'express';
 import feedbackly from '../services/feedbackly';
 import { FeedbackQuery, FeedbacklyAPI, Rating } from '../types';
 import {
-    getAverageRatingFromAnswers,
     getAverageRatingFromFeedbacks,
     getFilteredRatings,
+    getRatingDetailFromAnswers,
     // getRatingFromSingleAnswer,
 } from '../utils';
 import { surveyId } from '../utils/constants';
@@ -30,9 +30,9 @@ router.get('/', async (req, res) => {
             // .then(fbs => fbs.filter(fb => !!fb.data.find(ans => ans.question_type === 'Slider')));
 
         const ratings: Rating[] = feedbacks.map(feedback => ({
-            rating: +getAverageRatingFromAnswers(feedback.data).toFixed(2),
             timestamp: new Date(feedback.created_at).getTime(),
             id: feedback.id,
+            ...getRatingDetailFromAnswers(feedback.data),
             // to check questions 4 5
             // ratings: feedback.data.map(ans => [ans.question_type , +getRatingFromSingleAnswer(ans).toFixed(2)]),
         }));
