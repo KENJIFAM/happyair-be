@@ -15,7 +15,7 @@ app.get('/*', (req, res) => {
     res.send('Welcome to Happy Air APIs!');
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log('Server is running at port 3000');
 });

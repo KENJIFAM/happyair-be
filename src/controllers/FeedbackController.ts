@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
         const channelIdQuery = room && `&channel_id=${room}` || '';
         const dateFromQuery = dateFrom && `&date_from=${dateFrom}` || '';
         const dateToQuery = dateTo && `&date_to=${dateTo}` || '';
-        const limit = limitPoint && parseInt(limitPoint) || 0;
+        const limit = limitPoint && parseFloat(limitPoint) || 0;
 
         const feedbacks = await feedbackly
             .get(`/feedbacks?survey_id=${surveyId}${channelIdQuery}${dateFromQuery}${dateToQuery}`)
