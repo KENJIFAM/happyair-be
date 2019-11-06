@@ -8,7 +8,6 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     try {
         const { id } = req.query as RoomsQuery;
-
         const channels = await feedbackly.get('/channels')
             .then(res => res.data as ChannelAPI[]);
 
@@ -21,6 +20,11 @@ router.get('/', async (req, res) => {
                 id: channel.id,
                 name: `Room ${channel.name.slice(-3)}`,
             }));
+
+        if (id) {
+            const room = rooms.find(r => r.id === id);
+            return res.status(200).json({ ...room });
+        }
         return res.status(200).json([ ...rooms ]);
     } catch (err) {
         return res.status(500).send('There was a problem finding rooms.' + err);
