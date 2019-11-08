@@ -1,4 +1,4 @@
-import { RatingsMap } from '../types';
+import { RatingsMap, MeasurementUnit } from '../types';
 
 export const ratingsMap: RatingsMap = {
     '5c072c0d7af0f18c829fdfe0': { // question 1: temperature
@@ -262,6 +262,17 @@ export const ratingsMap: RatingsMap = {
     '5c07311c7af0f18c829fdff2': { // question 5: cleanliness, 0 = no particles / dust, 10 = lots
         title: 'cleanliness',
     },
+};
+
+export const units: MeasurementUnit = {
+    co2: 'ppm',
+    humidity: '%RH',
+    pm1: 'μg/m3',
+    pm10: 'μg/m3',
+    pm2_5: 'μg/m3',
+    temperature: '°C',
+    tvoc: 'ppb',
+    pressureDiff: 'Pa',
 };
 
 export const sliderQuestions = [

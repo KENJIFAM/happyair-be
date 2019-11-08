@@ -1,4 +1,4 @@
-import { AnswerAPI, Rating, RatingDetail, ChannelAPI, MeasurementInfoAPI, RoomAPI } from '../types';
+import { AnswerAPI, Rating, RatingDetail, ChannelAPI, MeasurementInfoAPI, RoomAPI, MeasurementUnit } from '../types';
 import { ratingsMap } from './constants';
 import feedbackly from '../services/feedbackly';
 import { getMeasurementInfo } from '../services/nuuka';

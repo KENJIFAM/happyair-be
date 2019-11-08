@@ -104,6 +104,17 @@ export interface ChannelAPI {
     id: string,
 }
 
+export interface MeasurementUnit {
+    co2?: string,
+    humidity?: string,
+    pm1?: string,
+    pm10?: string,
+    pm2_5?: string,
+    temperature?: string,
+    tvoc?: string,
+    pressureDiff?: string,
+}
+
 export interface RoomAPI {
     id: string,
     name: Locale,
