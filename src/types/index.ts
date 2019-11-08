@@ -47,6 +47,20 @@ export interface RatingDetail {
     workingAbility?: number,
 }
 
+export interface FeedbackMap {
+    title: string,
+    data?: {
+        [answerId: string]: {
+            value: number,
+            answer: Locale,
+        },
+    },
+}
+
+export interface RatingsMap {
+    [questionId: string]: FeedbackMap,
+}
+
 export interface Rating extends RatingDetail {
     timestamp: number,
     id: string,
@@ -90,7 +104,18 @@ export interface ChannelAPI {
     id: string,
 }
 
-export type RoomAPI = ChannelAPI;
+export interface RoomAPI {
+    id: string,
+    name: Locale,
+    co2?: number,
+    humidity?: number,
+    pm1?: number,
+    pm10?: number,
+    pm2_5?: number,
+    temperature?: number,
+    tvoc?: number,
+    pressureDiff?: number,
+}
 
 export interface IndoorConditionDataParams {
     startTime: string,
@@ -106,4 +131,11 @@ export interface MeasurementDataByIDsParams {
 export interface MeasurementInfoAPI {
     DataPointID: number,
     Name: string,
+}
+
+export interface ReportQuery {
+    dataType: string,
+    groupBy?: 'minute' | 'hour' | 'day' | 'week' | 'month',
+    startTime?: string,
+    endTime?: string,
 }

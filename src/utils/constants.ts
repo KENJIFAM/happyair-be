@@ -1,53 +1,260 @@
-export const ratings = {
+import { RatingsMap } from '../types';
+
+export const ratingsMap: RatingsMap = {
     '5c072c0d7af0f18c829fdfe0': { // question 1: temperature
         title: 'temperature',
-        '5c072aee7af0f18c829fdfd6': 1, // hot
-        '5c072c287af0f18c829fdfe4': 4, // slightly cool
-        '5c072c117af0f18c829fdfe1': 5, // warm
-        '5c072cf27af0f18c829fdfe6': 5, // cool
-        '5c072c157af0f18c829fdfe2': 4, // slight warm
-        '5c072cef7af0f18c829fdfe5': 1, // cold
-        '5c072c167af0f18c829fdfe3': 3, // suitable
+        data: {
+            '5c072aee7af0f18c829fdfd6': {
+                value: 1,
+                answer: {
+                    en: 'hot',
+                    fi: 'KUUMA',
+                },
+            },
+            '5c072c287af0f18c829fdfe4': {
+                value: 4,
+                answer: {
+                    en: 'quite cool',
+                    fi: 'HIEMAN VIILEÄ',
+                },
+            },
+            '5c072c117af0f18c829fdfe1': {
+                value: 5,
+                answer: {
+                    en: 'warm',
+                    fi: 'LÄMMIN',
+                },
+            },
+            '5c072cf27af0f18c829fdfe6': {
+                value: 5,
+                answer: {
+                    en: 'cool',
+                    fi: 'VIILEÄ',
+                },
+            },
+            '5c072c157af0f18c829fdfe2': {
+                value: 4,
+                answer: {
+                    en: 'quite warm',
+                    fi: 'HIEMAN LÄMMIN',
+                },
+            },
+            '5c072cef7af0f18c829fdfe5': {
+                value: 1,
+                answer: {
+                    en: 'cold',
+                    fi: 'KYLMÄ',
+                },
+            },
+            '5c072c167af0f18c829fdfe3': {
+                value: 3,
+                answer: {
+                    en: 'suitable',
+                    fi: 'SOPIVA',
+                },
+            },
+        },
     },
     '5c072d437af0f18c829fdfe7': { // question 2: freshness
         title: 'freshness',
-        '5c072aee7af0f18c829fdfd6': 5, // fresh
-        '5c072d9a7af0f18c829fdfe8': 4, // quite fresh
-        '5c072d9b7af0f18c829fdfe9': 3, // neither fresh nor fusty/musty/stuffy
-        '5c072d9c7af0f18c829fdfea': 2, // quite fusty/musty/stuffy
-        '5c072d9d7af0f18c829fdfeb': 1, // fusty/musty/stuffy
+        data: {
+            '5c072aee7af0f18c829fdfd6': {
+                value: 5,
+                answer: {
+                    en: 'fresh',
+                    fi: 'RAIKAS',
+                },
+            },
+            '5c072d9a7af0f18c829fdfe8': {
+                value: 4,
+                answer: {
+                    en: 'quite fresh',
+                    fi: 'MELKO RAIKAS',
+                },
+            },
+            '5c072d9b7af0f18c829fdfe9': {
+                value: 3,
+                answer: {
+                    en: 'normal',
+                    fi: 'EI RAIKAS EIKÄ TUNKKAINEN',
+                },
+            },
+            '5c072d9c7af0f18c829fdfea': {
+                value: 2,
+                answer: {
+                    en: 'quite stuffy',
+                    fi: 'MELKO TUNKKAINEN',
+                },
+            },
+            '5c072d9d7af0f18c829fdfeb': {
+                value: 1,
+                answer: {
+                    en: 'stuffy',
+                    fi: 'TUNKKAINEN',
+                },
+            },
+        },
     },
     '5c072de07af0f18c829fdfec': { // question 3: humidity
         title: 'humidity',
-        '5c072aee7af0f18c829fdfd6': 1, // dry
-        '5c072e127af0f18c829fdfed': 3, // quite dry
-        '5c072e1b7af0f18c829fdfee': 5, // no dry and moisture
-        '5c072e257af0f18c829fdfef': 3, // quite moisture
-        '5c072e2e7af0f18c829fdff0': 1, // moisture
+        data: {
+            '5c072aee7af0f18c829fdfd6': {
+                value: 1,
+                answer: {
+                    en: 'dry',
+                    fi: 'KUIVA',
+                },
+            },
+            '5c072e127af0f18c829fdfed': {
+                value: 3,
+                answer: {
+                    en: 'quite dry',
+                    fi: 'MELKO KUIVA',
+                },
+            },
+            '5c072e1b7af0f18c829fdfee': {
+                value: 5,
+                answer: {
+                    en: 'normal',
+                    fi: 'EI KUIVA EIKÄ KOSTEA',
+                },
+            },
+            '5c072e257af0f18c829fdfef': {
+                value: 3,
+                answer: {
+                    en: 'quite moisture',
+                    fi: 'MELKO KOSTEA',
+                },
+            },
+            '5c072e2e7af0f18c829fdff0': {
+                value: 1,
+                answer: {
+                    en: 'moisture',
+                    fi: 'KOSTEA',
+                },
+            },
+        },
     },
     '5c07319d7af0f18c829fdff3': { // question 6: lighting
         title: 'lighting',
-        '5c072aee7af0f18c829fdfd6': 5, // good
-        '5c0731b47af0f18c829fdff4': 4, // quite good
-        '5c0731b57af0f18c829fdff5': 3, // neither good nor bad
-        '5c0731b67af0f18c829fdff6': 2, // quite bad
-        '5c0731b87af0f18c829fdff7': 1, // bad
+        data: {
+            '5c072aee7af0f18c829fdfd6': {
+                value: 5,
+                answer: {
+                    en: 'good',
+                    fi: 'HYVÄ',
+                },
+            },
+            '5c0731b47af0f18c829fdff4': {
+                value: 4,
+                answer: {
+                    en: 'quite good',
+                    fi: 'MELKO HYVÄ',
+                },
+            },
+            '5c0731b57af0f18c829fdff5': {
+                value: 3,
+                answer: {
+                    en: 'normal',
+                    fi: 'EI HYVÄ EIKÄ HUONO',
+                },
+            },
+            '5c0731b67af0f18c829fdff6': {
+                value: 2,
+                answer: {
+                    en: 'quite bad',
+                    fi: 'MELKO HUONO',
+                },
+            },
+            '5c0731b87af0f18c829fdff7': {
+                value: 1,
+                answer: {
+                    en: 'bad',
+                    fi: 'HUONO',
+                },
+            },
+        },
+
     },
     '5c07321e7af0f18c829fdff8': { // question 7: sound
         title: 'sound',
-        '5c072aee7af0f18c829fdfd6': 5, // good
-        '5c07325d7af0f18c829fdff9': 4, // quite good
-        '5c07325e7af0f18c829fdffa': 3, // neither good nor bad
-        '5c0732617af0f18c829fdffb': 2, // quite bad
-        '5c0732627af0f18c829fdffc': 1, // bad
+        data: {
+            '5c072aee7af0f18c829fdfd6': {
+                value: 5,
+                answer: {
+                    en: 'good',
+                    fi: 'HYVÄ',
+                },
+            },
+            '5c07325d7af0f18c829fdff9': {
+                value: 4,
+                answer: {
+                    en: 'quite good',
+                    fi: 'MELKO HYVÄ',
+                },
+            },
+            '5c07325e7af0f18c829fdffa': {
+                value: 3,
+                answer: {
+                    en: 'normal',
+                    fi: 'EI HYVÄ EIKÄ HUONO',
+                },
+            },
+            '5c0732617af0f18c829fdffb': {
+                value: 2,
+                answer: {
+                    en: 'quite bad',
+                    fi: 'MELKO HUONO',
+                },
+            },
+            '5c0732627af0f18c829fdffc': {
+                value: 1,
+                answer: {
+                    en: 'bad',
+                    fi: 'HUONO',
+                },
+            },
+        },
     },
     '5c0732947af0f18c829fdffd': { // question 8: working or learning ability is in the classroom
         title: 'workingAbility',
-        '5c072aee7af0f18c829fdfd6': 5, // good
-        '5c07331b7af0f18c829fdffe': 4, // quite good
-        '5c07331c7af0f18c829fdfff': 3, // neither good nor bad
-        '5c07331e7af0f18c829fe000': 2, // quite bad
-        '5c07331e7af0f18c829fe001': 1, // bad
+        data: {
+            '5c072aee7af0f18c829fdfd6': {
+                value: 5,
+                answer: {
+                    en: 'good',
+                    fi: 'HYVÄ',
+                },
+            },
+            '5c07331b7af0f18c829fdffe': {
+                value: 4,
+                answer: {
+                    en: 'quite good',
+                    fi: 'MELKO HYVÄ',
+                },
+            },
+            '5c07331c7af0f18c829fdfff': {
+                value: 3,
+                answer: {
+                    en: 'normal',
+                    fi: 'EI HYVÄ EIKÄ HUONO',
+                },
+            },
+            '5c07331e7af0f18c829fe000': {
+                value: 2,
+                answer: {
+                    en: 'quite bad',
+                    fi: 'MELKO HUONO',
+                },
+            },
+            '5c07331e7af0f18c829fe001': {
+                value: 1,
+                answer: {
+                    en: 'bad',
+                    fi: 'HUONO',
+                },
+            },
+        },
     },
     '5c072e5c7af0f18c829fdff1': { // question 4: smell, 0 = no odor, 10 = strong odor
         title: 'smell',
