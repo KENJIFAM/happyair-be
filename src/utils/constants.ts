@@ -274,3 +274,14 @@ export const surveyId = '5c072aebf6466b0a4e4b696b';
 export const organizationId = '5bd06a081ad589125f331bbe';
 
 export const buildingId = 2410;
+
+export const unit = {
+    'co2': 'ppm',
+    'humidity': '%',
+    'pm1': 'ppm',
+    'pm10': 'ppm',
+    'pm2_5': 'ppm',
+    'temperature': 'oC',
+    'tvoc': 'mg/m3',
+    'pressureDiff': 'atm',
+};

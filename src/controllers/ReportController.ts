@@ -8,7 +8,7 @@ import {
     getAverageRatingFromFeedbacks,
     getRatingDetailFromAnswers,
 } from '../utils';
-import { surveyId } from '../utils/constants';
+import { surveyId, unit } from '../utils/constants';
 
 const router = express.Router();
 
@@ -50,6 +50,7 @@ router.get('/', async (req, res) => {
                 const returnValue = {};
                 returnValue['room'] = id;
                 returnValue['type'] = data;
+                returnValue['unit'] = unit[data!];
                 returnValue['data'] = [];
 
                 for (let [key, value] of Object.entries(response) as any) {
