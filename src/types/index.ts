@@ -97,6 +97,10 @@ export type AnswerAPI = SliderAnswer | WordAnswer;
 
 export interface RoomsQuery {
     id?: string,
+    data?: string,
+    startTime?: string,
+    endTime?: string,
+    groupBy?: string
 }
 
 export interface ChannelAPI {
@@ -138,4 +142,13 @@ export interface ReportQuery {
     groupBy?: 'minute' | 'hour' | 'day' | 'week' | 'month',
     startTime?: string,
     endTime?: string,
+}
+
+export interface NuukaReportAPI {
+    Timestamp: Date,
+    Name: string,
+    Description: string,
+    Value: number,
+    Target: any,
+    DataPointID: number
 }
