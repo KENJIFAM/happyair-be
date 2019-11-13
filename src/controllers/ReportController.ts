@@ -56,7 +56,7 @@ router.get('/', async (req, res) => {
                     const average: number = value.total / value.count;
                     const dateFeedbacks = value.feedbacks;
                     if (dateFeedbacks) {
-                        const ratings: Rating[] = dateFeedbacks!.map((feedback : any) => ({
+                        const ratings: Rating[] = dateFeedbacks!.map((feedback: any) => ({
                             timestamp: new Date(feedback.created_at).getTime(),
                             id: feedback.id,
                             ...getRatingDetailFromAnswers(feedback.data),
