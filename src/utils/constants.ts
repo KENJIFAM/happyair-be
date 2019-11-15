@@ -285,3 +285,13 @@ export const unit = {
     'tvoc': 'mg/m3',
     'pressureDiff': 'atm',
 };
+
+export function groupByFunction(groupBy: any) {
+    switch (groupBy) {
+        case 'hour':
+            return 'YYYY-MM-DD-HH';
+            break;
+        default:
+            return 'YYYY-MM-DD';
+    }
+}

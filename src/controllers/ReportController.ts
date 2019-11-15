@@ -8,14 +8,16 @@ import {
     getAverageRatingFromFeedbacks,
     getRatingDetailFromAnswers,
 } from '../utils';
-import { surveyId, unit } from '../utils/constants';
+import { surveyId, unit, groupByFunction } from '../utils/constants';
 
 const router = express.Router();
 
-// @GET rooms?id={room-id}&data={co2}&startTime={Timestamp}&endTime={Timestamp}&groupby={day}
+// @GET rooms?id={room-id}&data={co2}&startTime={Timestamp}&endTime={Timestamp}&groupby={day, hour}
 router.get('/', async (req, res) => {
     try {
-        const { id, data, startTime, endTime } = req.query as RoomsQuery;
+        const { id, data, startTime, endTime, groupBy } = req.query as RoomsQuery;
+
+        const groupByParam = groupByFunction(groupBy);
 
         const rooms = await getRoomsInfo();
 
@@ -28,7 +30,7 @@ router.get('/', async (req, res) => {
                 // create object with dates as unique keys
                 const response = {};
                 result.forEach(entry => {
-                    let time = moment(entry.Timestamp).format('YYYY-MM-DD');
+                    let time = moment(entry.Timestamp).format(groupByParam);
                     if (!response[time])
                         response[time] = {'total' : 0, 'count': 0, 'feedbacks': []};
                     response[time].total += entry.Value;
@@ -42,7 +44,7 @@ router.get('/', async (req, res) => {
 
                 // push feedbacks to correct date in object
                 feedbacks.forEach(entry => {
-                    let time = moment(entry.created_at).format('YYYY-MM-DD');
+                    let time = moment(entry.created_at).format(groupByParam);
                     response[time].feedbacks.push(entry);
                 });
 
@@ -62,10 +64,11 @@ router.get('/', async (req, res) => {
                             id: feedback.id,
                             ...getRatingDetailFromAnswers(feedback.data),
                         }));
-                        const averageRating = getAverageRatingFromFeedbacks(ratings).toFixed(2);
+                        const averageRating = Math.round(getAverageRatingFromFeedbacks(ratings) * 100) / 100;
                         const obj = {};
-                        obj['collected_time'] = key;
-                        obj['rating'] = parseFloat(averageRating);
+                        obj['collected_time'] = moment(key, groupByParam).unix(); // return unix timestamp
+                        if (averageRating)
+                            obj['rating'] = averageRating;
                         obj['value'] = Math.round(average * 100) / 100;
                         returnValue['data'].push(obj);
                     }
