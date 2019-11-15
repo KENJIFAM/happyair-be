@@ -291,6 +291,12 @@ export function groupByFunction(groupBy: any) {
         case 'hour':
             return 'YYYY-MM-DD-HH';
             break;
+        case 'week':
+            return 'W';
+            break;
+        case 'month':
+            return 'YYYY-MM';
+            break;
         default:
             return 'YYYY-MM-DD';
     }
