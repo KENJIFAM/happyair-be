@@ -1,4 +1,4 @@
-import { RatingsMap } from '../types';
+import { RatingsMap, MeasurementUnit } from '../types';
 
 export const ratingsMap: RatingsMap = {
     '5c072c0d7af0f18c829fdfe0': { // question 1: temperature
@@ -275,15 +275,15 @@ export const organizationId = '5bd06a081ad589125f331bbe';
 
 export const buildingId = 2410;
 
-export const unit = {
-    'co2': 'ppm',
-    'humidity': '%',
-    'pm1': 'ppm',
-    'pm10': 'ppm',
-    'pm2_5': 'ppm',
-    'temperature': 'oC',
-    'tvoc': 'mg/m3',
-    'pressureDiff': 'atm',
+export const unit: MeasurementUnit = {
+    co2: 'ppm',
+    humidity: '%RH',
+    pm1: 'μg/m3',
+    pm10: 'μg/m3',
+    pm2_5: 'μg/m3',
+    temperature: '°C',
+    tvoc: 'ppb',
+    pressureDiff: 'Pa',
 };
 
 export function groupByFunction(groupBy: any) {

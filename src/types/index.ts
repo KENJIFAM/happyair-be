@@ -121,6 +121,17 @@ export interface RoomAPI {
     pressureDiff?: number,
 }
 
+export interface MeasurementUnit {
+    co2?: string,
+    humidity?: string,
+    pm1?: string,
+    pm10?: string,
+    pm2_5?: string,
+    temperature?: string,
+    tvoc?: string,
+    pressureDiff?: string,
+}
+
 export interface IndoorConditionDataParams {
     startTime: string,
     endTime: string,
