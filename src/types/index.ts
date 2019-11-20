@@ -155,11 +155,12 @@ export interface NuukaReportAPI {
 
 export interface DataDetail {
     value: number,
-    timestamp: number,
+    unit: string
 }
 export interface RoomDetails {
     id: string,
     name: Locale,
+    timestamp: number,
     co2?: DataDetail,
     humidity?: DataDetail,
     pm1?: DataDetail,
