@@ -127,7 +127,7 @@ export interface IndoorConditionDataParams {
 }
 
 export interface MeasurementDataByIDsParams {
-    dataPointIds: string,
+    dataPointIds: string | number,
     startTime: string,
     endTime: string,
 }
@@ -151,4 +151,21 @@ export interface NuukaReportAPI {
     Value: number,
     Target: any,
     DataPointID: number
+}
+
+export interface DataDetail {
+    value: number,
+    timestamp: number,
+}
+export interface RoomDetails {
+    id: string,
+    name: Locale,
+    co2?: DataDetail,
+    humidity?: DataDetail,
+    pm1?: DataDetail,
+    pm10?: DataDetail,
+    pm2_5?: DataDetail,
+    temperature?: DataDetail,
+    tvoc?: DataDetail,
+    pressureDiff?: DataDetail,
 }
